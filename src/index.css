@@ -41,3 +41,7 @@ ul {
   vertical-align: baseline;
   background: transparent;
 }
+
+h1 {
+   font-weight: 100;
+}

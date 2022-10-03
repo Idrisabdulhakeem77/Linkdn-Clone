@@ -1,6 +1,19 @@
 a {
-    border : solid 2px #2977c9;
-    transition-duration : 1s;
-   
-     
+  align-content: start;
+  min-height: 700px;
+  padding-bottom: 138px;
+  padding-top: 40px;
+  padding:  0;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1128px;
+  align-items: center;
+  margin: auto;
+ border: solid 2px black;
+
+
+
+
+ 
 }
