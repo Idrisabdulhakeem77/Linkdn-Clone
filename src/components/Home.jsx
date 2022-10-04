@@ -133,6 +133,7 @@ const Nav =  styled.nav`
  const Hero = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
     h1 {
        padding-bottom : 0;
        font-size : 3rem ;
@@ -145,20 +146,24 @@ const Nav =  styled.nav`
        @media(max-width : 768px) {
            text-align: center;
            width: 100%;
-           font-size: 2rem;
+           font-size: 1.5rem;
            font-weight: 100;
 }
    }
 
    img {
-       width : 700px;
-       height : 400px ;
+       width: 500px;
+       height: 560px;
+       position: absolute;
        display: block;
+       right: 0;
+      
        
        @media screen and ( max-width: 768px) {
            width : 370px ;
            height: 215px;
            margin: auto;
+           position: relative;
           
        }
  }
@@ -167,6 +172,10 @@ const Nav =  styled.nav`
 
 const SectionContainer  = styled.div`
    width : 50% ;
+
+   @media screen and (max-width: 768px) {
+       width: 100%;
+   }
 `
 
 const Form =  styled.form`
@@ -179,10 +188,7 @@ const Form =  styled.form`
       margin-bottom: 0.7rem;
       font-size: 1rem;
       
-
-      &:focus{
-          border: solid 2px #0073B1;
-      }
+      
    }
 
    p {
