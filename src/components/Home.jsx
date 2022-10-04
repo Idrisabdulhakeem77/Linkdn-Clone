@@ -21,8 +21,18 @@ function Home() {
                 <SectionContainer>
                 <h1>Join the biggest professional community</h1>
                 <Form>
+                  <input type="text" placeholder="Email or phone number"/>
 
-                </Form>
+                  <input type="password" placeholder="Password"/>
+
+                  <p>By clicking Agree &amp; Join, you agree to the LinkedIn <span>User Agreement, Privacy Policy </span>, and <span>
+                  Cookie Policy</span>.</p>
+                  <Button>Agree &amp; Join</Button>
+                   <Divider>
+                         <span> or</span>
+                   </Divider>
+                    <h2>Already a member ? <span> <Link to="/signin" style={{ textDecoration : "none"}}>Sign in</Link></span></h2>
+                  </Form>
                 </SectionContainer>
                 
                  <img src="/images/hero.svg"  alt="hero-img"/>
@@ -113,7 +123,6 @@ const Nav =  styled.nav`
   align-items: center;
   margin-top : 3rem;
 
-
   @media (max-width: 768px) {
      margin-top : 3rem ;
      min-height : 0px ;
@@ -124,36 +133,102 @@ const Nav =  styled.nav`
  const Hero = styled.div`
   width: 100%;
   display: flex;
-  border: solid 1px black;
-   h1 {
-       padding-bottom : 0 ;
-       width:90%;
+    h1 {
+       padding-bottom : 0;
        font-size : 3rem ;
+       
        font-weight : 100;
        color:  #8F5849 ;
-       line-height : 70px;
-       border: solid 1px black;
+       line-height : 70px ;
+       margin-bottom: 1rem;
 
        @media(max-width : 768px) {
-           text-align : center;
+           text-align: center;
            width: 100%;
-           font-size: 1.5rem;
-       }
+           font-size: 2rem;
+           font-weight: 100;
+}
    }
 
    img {
-       width : 1000px;
+       width : 700px;
        height : 400px ;
-      
+       display: block;
        
-       
-   }
+       @media screen and ( max-width: 768px) {
+           width : 370px ;
+           height: 215px;
+           margin: auto;
+          
+       }
+ }
   `
 
 
 const SectionContainer  = styled.div`
-   border : solid 1px black ; 
-   width : 100% ;
+   width : 50% ;
 `
 
-const Form =  styled.form``
+const Form =  styled.form`
+   position: relative;
+   margin-right: 1rem;
+    margin-left: 1rem;
+   input {
+       width: 90%;
+      padding : 1rem 0.5rem ;
+      margin-bottom: 0.7rem;
+      font-size: 1rem;
+      
+
+      &:focus{
+          border: solid 2px #0073B1;
+      }
+   }
+
+   p {
+       font-size: 1rem;
+       margin-bottom: 1rem;
+
+       span {
+          color: #0A66C2 ;
+           &:hover {
+              border-bottom: solid 1px #0A66C2;
+           }
+       }
+       
+   }
+
+   h2 {
+       text-align: center;
+       margin: 1rem 0 ;
+   }
+  `
+
+const Button  = styled.button`
+    color : #fff;
+    background-color: #2977C9;
+    width: 95%;
+    padding: 1rem;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 1rem;
+    height: 56px;
+    margin-bottom: 1.2rem;
+`
+
+const Divider =  styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &::before , &::after {
+      height: 1px;
+      width: auto;
+      background-color: rgb(0 0 0 / .35);
+      content: "";
+      flex-grow: 1;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+`
