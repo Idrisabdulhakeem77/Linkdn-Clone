@@ -38,6 +38,7 @@ export default Home
 
 const Container = styled.div`
   padding : 0 4rem  ;
+  
     
  @media (max-width : 768px) {
    padding: 0 5px
@@ -52,9 +53,10 @@ const Nav =  styled.nav`
    justify-content : space-between;
    align-items : center ;
    margin-top : 1rem ;
-   positon: relative ;
+   position: relative ;
    padding :  12px 0 10px ;
-   flex-wrap : nowrap
+   flex-wrap : nowrap ;
+   
 
  `
 
@@ -91,7 +93,7 @@ const Nav =  styled.nav`
     width: 130px ;
     height : 30px ;
 
-    @mdeia (max-width : 768px) {
+    @media (max-width : 768px) {
        padding : 0 5px;
     }
  `
@@ -109,11 +111,11 @@ const Nav =  styled.nav`
   width: 100%;
   max-width: 1128px;
   align-items: center;
-  margin: auto;
+  margin-top : 3rem;
 
 
   @media (max-width: 768px) {
-     margin : auto ;
+     margin-top : 3rem ;
      min-height : 0px ;
   }
  `
@@ -121,33 +123,32 @@ const Nav =  styled.nav`
 
  const Hero = styled.div`
   width: 100%;
-  display : flex ;
-  h1 {
-    padding-bottom: 0;
-    width: 100%;
-    font-size: 3rem;
-    align-self: flex-start;
-    padding-right: 42px;
-    color: #8F5849;
-    font-weight: 200; 
-    border : solid 1px black ;
-    
-    @media (max-width: 768px) {
-      text-align: center;
-      font-weight : 200 ;
-      font-size: 2rem;
-      width: 100%;
-      line-height: 2;
-    }
+  display: flex;
+  border: solid 1px black;
+   h1 {
+       padding-bottom : 0 ;
+       width:90%;
+       font-size : 3rem ;
+       font-weight : 100;
+       color:  #8F5849 ;
+       line-height : 70px;
+       border: solid 1px black;
+
+       @media(max-width : 768px) {
+           text-align : center;
+           width: 100%;
+           font-size: 1.5rem;
+       }
    }
 
    img {
-       width : 700px;
-       height : 560px ;
-       padding-top : 2rem ;
+       width : 1000px;
+       height : 400px ;
+      
+       
        
    }
-  }`
+  `
 
 
 const SectionContainer  = styled.div`
