@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Link } from 'react-router-dom'
 
 
-function Home() {
+const  Home = () =>  {
   return (
      <Container> 
           <Nav>
@@ -31,7 +31,13 @@ function Home() {
                    <Divider>
                          <span> or</span>
                    </Divider>
-                    <h2>Already a member ? <span> <Link to="/signin" style={{ textDecoration : "none"}}>Sign in</Link></span></h2>
+                <SignInButton>
+                 <img src="/images/google.svg" alt="google" />
+                 <span>
+                 Sign in with Google 
+                 </span>
+                    
+                </SignInButton>
                   </Form>
                 </SectionContainer>
                 
@@ -151,7 +157,7 @@ const Nav =  styled.nav`
 }
    }
 
-   img {
+   & > img {
        width: 500px;
        height: 560px;
        position: absolute;
@@ -178,7 +184,7 @@ const SectionContainer  = styled.div`
    }
 `
 
-const Form =  styled.form`
+const Form =  styled.div`
    position: relative;
    margin-right: 1rem;
     margin-left: 1rem;
@@ -194,6 +200,7 @@ const Form =  styled.form`
    p {
        font-size: 1rem;
        margin-bottom: 1rem;
+       line-height: 1.5rem;
 
        span {
           color: #0A66C2 ;
@@ -213,14 +220,19 @@ const Form =  styled.form`
 const Button  = styled.button`
     color : #fff;
     background-color: #2977C9;
-    width: 95%;
+    width: 100%;
     padding: 1rem;
     border: none;
     border-radius: 30px;
     text-align: center;
     font-size: 1rem;
+    transition: 1s;
     height: 56px;
     margin-bottom: 1.2rem;
+     &:hover{
+        cursor: pointer;
+        background-color: #0A66C2;
+     }
 `
 
 const Divider =  styled.div`
@@ -237,4 +249,36 @@ const Divider =  styled.div`
       margin-left: 1rem;
       margin-right: 1rem;
     }
+`
+
+const SignInButton = styled.button`
+ border: solid 1px black;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     background-color: #fff;
+     padding: 0 2rem;
+     align-items: center;
+     height: 56px;
+     border-radius: 28px;
+     font-size: 1.4rem;
+     color: rgba(0, 0, 0, 0.6);
+     margin-top: 1.2rem;
+     transition: 400ms;
+     border: solid 1px black;
+     vertical-align: middle;
+     
+
+      &:hover {
+         cursor: pointer;
+         background-color: rgba(207, 207, 207, 0.25);
+         border: solid 2px black;
+        color: rgba(0 , 0 ,  0 , 0.9);
+      }
+
+      span {
+          margin-left: 1rem;
+      }
+
+     
 `
