@@ -18,9 +18,9 @@ const Feed = () => {
         </p>
       </Section>
       <Layout>
-         <p>Left</p>
-         <p>Main</p>
-         <p>Right</p>
+         <Leftside/>
+         <Main/>
+         <Rightside/>
       </Layout>
      </Container>
   )
