@@ -23,39 +23,65 @@ function Navbar() {
            <Nav>
            <NavListWrap>
             <NavList className="active">
-              <a>
+              <a href='/'>
                 <img src="/images/nav-home.svg" alt="" />
                 <span>Home</span>
               </a>
             </NavList>
 
             <NavList>
-              <a>
+              <a href='/network' target="_blank">
                 <img src="/images/nav-network.svg" alt="" />
                 <span>My Network</span>
               </a>
             </NavList>
 
             <NavList>
-              <a>
+              <a href='/jobs' target="_blank">
                 <img src="/images/nav-jobs.svg" alt="" />
                 <span>Jobs</span>
               </a>
             </NavList>
 
             <NavList>
-              <a>
+              <a href='/messaging' target="_blank">
                 <img src="/images/nav-messaging.svg" alt="" />
                 <span>Messaging</span>
               </a>
             </NavList>
 
             <NavList>
-              <a>
+              <a href='/notification' target="_blank">
                 <img src="/images/nav-notifications.svg" alt="" />
                 <span>Notifications</span>
               </a>
             </NavList>
+
+            <User>
+              <a href='/me' target="_blank">
+                <img src="/images/user.svg" alt="" />
+                <span>
+                  Me
+                  <img src="/images/down-icon.svg" alt="" />
+                </span>
+                
+              </a>
+
+              <SignOut>
+                <a href='/signout' target="_blank">Sign Out</a>
+              </SignOut>
+            </User>
+            
+
+            <Work>
+              <a>
+                <img src="/images/nav-work.svg" alt="" />
+                <span>
+                  Work
+                  <img src="/images/down-icon.svg" alt="" />
+                </span>
+              </a>
+            </Work>
             </NavListWrap>
            </Nav>
             </Content>
@@ -201,4 +227,50 @@ const NavList = styled.li`
     }
   }
 `;
+
+const SignOut = styled.div`
+  position: absolute;
+  top: 45px;
+  background: white;
+  border-radius: 0 0 5px 5px;
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  transition-duration: 167ms;
+  text-align: center;
+  display: none;
+`;
+
+
+
+const User = styled(NavList)`
+  a > svg {
+    width: 24px;
+    border-radius: 50%;
+  }
+
+  a > img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover {
+    ${SignOut} {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+`;
+
+const Work = styled(User)`
+   border-left: solid 1px rgba(0, 0, 0, 0.2);
+ `
+
 export default Navbar
