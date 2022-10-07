@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Leftside = (props) => {
+const Leftside = () => {
   return (
     <Container>
       <ArtCard>
@@ -48,6 +48,7 @@ const Leftside = (props) => {
           <span>Discover more</span>
         </a>
       </CommunityCard>
+      
     </Container>
   );
 };
@@ -66,7 +67,7 @@ const ArtCard = styled.div`
   position: relative;
   border: none;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
-  border: solid 1px black
+  border: solid 1px black;
 `;
 
 const UserInfo = styled.div`
@@ -74,7 +75,6 @@ const UserInfo = styled.div`
   padding: 12px 12px 16px;
   word-wrap: break-word;
   word-break: break-word;
-  border: solid 1px black ;
 `;
 
 const CardBackground = styled.div`
@@ -82,7 +82,6 @@ const CardBackground = styled.div`
   background-position: center;
   background-size: 462px;
   height: 54px;
-  border: solid 1px black;
   margin: -12px -12px 0;
 `;
 
@@ -100,7 +99,7 @@ const Photo = styled.div`
   border: 2px solid white;
   margin: -38px auto 12px;
   border-radius: 50%;
-  border: solid 1px black;
+
 `;
 
 const Link = styled.div`
