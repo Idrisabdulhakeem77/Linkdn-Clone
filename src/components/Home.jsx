@@ -267,6 +267,7 @@ const SignInButton = styled.button`
      transition: 400ms;
      border: solid 1px black;
      vertical-align: middle;
+     margin-bottom :1rem ;
      
 
       &:hover {
