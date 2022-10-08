@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
+// import { provider , }
+// import {  signInWithPopup  } from "firebase/auth";
 
 const initialState = {
   value: 0,
 }
+
+
 
 export const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
     increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
+    
       state.value += 1
     },
     decrement: (state) => {
@@ -24,18 +25,35 @@ export const counterSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
+
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
-const INTILAL_STATE =  {
-      user: null
-}
+export  default counterSlice.reducer 
+
+// const INTILAL_STATE =  {
+//       user: {
+//          name : "idris",
+//          surname : "Abdulhakeem"
+//       }
+// }
 
 
-const userSlice = createSlice({
-    name : "user" ,
-    INTILAL_STATE ,
-    reducers : {
-         
-    }
-})
+// const userSlice = createSlice({
+//     name : "user" ,
+//     INTILAL_STATE ,
+//     reducers : {
+//          signInApi : () => {
+//              return (dispatch) => {
+//                 signInWithPopup(auth , provider)
+//                 .then( (data) => console.log(data)) 
+//                 .catch((err) => console.log(err))
+
+//              }
+//          }
+//     }
+// })
+
+// export const { signInApi } = userSlice.actions
+
+// console.log()
+// export default userSlice.reducer 

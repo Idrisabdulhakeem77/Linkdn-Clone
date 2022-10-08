@@ -1,8 +1,11 @@
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
+import { useDispatch } from "react-redux"
+import { signInApi } from "../redux/userSlice"
 
 
 const  Home = () =>  {
+   // const dispatch = useDispatch()
   return (
      <Container> 
           <Nav>
@@ -31,7 +34,7 @@ const  Home = () =>  {
                    <Divider>
                          <span> or</span>
                    </Divider>
-                <SignInButton>
+                <SignInButton >
                  <img src="/images/google.svg" alt="google" />
                  <span>
                  Sign in with Google 
