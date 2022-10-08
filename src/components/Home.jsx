@@ -1,11 +1,14 @@
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
-import { useDispatch } from "react-redux"
+import { useDispatch , useSelector } from "react-redux"
 import { signInApi } from "../redux/userSlice"
 
 
+
 const  Home = () =>  {
-   // const dispatch = useDispatch()
+  
+   const dispatch = useDispatch()
+
   return (
      <Container> 
           <Nav>
@@ -30,11 +33,13 @@ const  Home = () =>  {
 
                   <p>By clicking Agree &amp; Join, you agree to the LinkedIn <span>User Agreement, Privacy Policy </span>, and <span>
                   Cookie Policy</span>.</p>
-                  <Button>Agree &amp; Join</Button>
+                  <Button >
+                     Agree &amp; Join
+                     </Button>
                    <Divider>
                          <span> or</span>
                    </Divider>
-                <SignInButton >
+                <SignInButton  onClick={() => dispatch(signInApi())}>
                  <img src="/images/google.svg" alt="google" />
                  <span>
                  Sign in with Google 
@@ -47,6 +52,7 @@ const  Home = () =>  {
                  <img src="/images/hero.svg"  alt="hero-img"/>
              </Hero>
           </Section>
+      
      </Container>
   )
 }
