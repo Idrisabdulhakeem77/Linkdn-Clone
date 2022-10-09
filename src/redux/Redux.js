@@ -17,6 +17,12 @@ export const signInApi=  () => {
      }
 }
 
+export const signOut = () => {
+      return (dispatch) => {
+          auth.signOut().then( dispatch(signIn(null)))
+      }
+     
+}
 
 
 export const signIn = (payload) => {

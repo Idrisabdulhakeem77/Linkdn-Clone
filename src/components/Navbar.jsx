@@ -2,6 +2,7 @@ import React  from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { signOut } from '../redux/Redux'
 
 
 function Navbar() {
@@ -63,7 +64,7 @@ function Navbar() {
             <User>
               <a href='/me' target="_blank">
                 {
-                   user && user.photoURL ?  <img src={user.photoURL} alt="user"/> 
+                   user &&  user.photoURL ?  <img src={user.photoURL} alt="user"/> 
                    : <img src="/images/user.svg" alt="" />
                 }
                
@@ -74,8 +75,8 @@ function Navbar() {
                 
               </a>
 
-              <SignOut>
-                <a href='/signout' target="_blank">Sign Out</a>
+              <SignOut onClick={() => signOut()}>
+                <a>Sign Out</a>
               </SignOut>
               { console.log(user?.photoURL)}
             </User>
