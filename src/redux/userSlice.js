@@ -1,7 +1,6 @@
 import { createSlice   } from '@reduxjs/toolkit'
 import {provider , auth} from '../firebase'
 import {  signInWithPopup  } from "firebase/auth";
-import todosReducer from './action';
 
 const initialState = {
   user : null
