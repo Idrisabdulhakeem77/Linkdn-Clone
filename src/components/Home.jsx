@@ -14,10 +14,9 @@ const  Home = () =>  {
    const navigate = useNavigate()
 
   return (
-     <Container>  
-             {
-                user && navigate('/feed')
-             }
+  
+     <Container> 
+       {user && navigate('/feed')} 
           <Nav>
              <Link  to="/">
                  <Image src="/images/login-logo.svg" alt="logo"/>

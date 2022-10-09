@@ -8,10 +8,10 @@ function App() {
   return (
     <div>
         <Routes>
-           <Route path='/' element={<Home/>}></Route>
+           <Route  index path='/' element={<Home/>}></Route>
         </Routes>
          <Routes>
-            <Route path='/feed' element={<><Navbar/><Feed/></>}></Route>
+            <Route path='feed' element={<><Navbar/><Feed/></>}></Route>
          </Routes>
     </div>
   )
