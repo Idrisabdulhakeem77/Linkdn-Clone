@@ -1,8 +1,11 @@
-import React from 'react'
+import React  from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+
 function Navbar() {
+  const user = useSelector(state => state.user)
   return (
     <div>
         <Container>
@@ -59,7 +62,11 @@ function Navbar() {
 
             <User>
               <a href='/me' target="_blank">
-                <img src="/images/user.svg" alt="" />
+                {
+                   user && user.photoURL ?  <img src={user.photoURL} alt="user"/> 
+                   : <img src="/images/user.svg" alt="" />
+                }
+               
                 <span>
                   Me
                   <img src="/images/down-icon.svg" alt="" />
@@ -70,6 +77,7 @@ function Navbar() {
               <SignOut>
                 <a href='/signout' target="_blank">Sign Out</a>
               </SignOut>
+              { console.log(user?.photoURL)}
             </User>
             
 
@@ -85,6 +93,7 @@ function Navbar() {
             </NavListWrap>
            </Nav>
             </Content>
+          
         </Container>
     </div>
   )

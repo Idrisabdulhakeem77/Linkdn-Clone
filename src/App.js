@@ -4,7 +4,12 @@ import { Routes , Route } from 'react-router-dom'
 import Home from './components/Home'
 import Feed from './components/Feed'
 
+
+
+
+
 function App() {
+   
   return (
     <div>
         <Routes>
@@ -13,6 +18,7 @@ function App() {
          <Routes>
             <Route path='feed' element={<><Navbar/><Feed/></>}></Route>
          </Routes>
+  
     </div>
   )
 }

@@ -9,7 +9,7 @@ import { signIn } from "../redux/Redux"
 
 
 const  Home = () =>  {
-    const user =  useSelector(state => state).user
+    const user =  useSelector(state => state.user)
    const dispatch = useDispatch()
    const navigate = useNavigate()
 
