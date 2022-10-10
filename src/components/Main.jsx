@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Main = () => {
   return (
     <Container>
-       <ShareBox> Share Post</ShareBox>
+       <ShareBox> Share Post
        <div>
           <img src="/images/user.svg" alt='user'/>
           <button> Share Post</button>
@@ -18,20 +18,21 @@ const Main = () => {
           </button>
 
           <button>
-             <img src="/images/video-icon.svg" alt=''/>
+             <img src="/images/video-icon.svg" alt='video'/>
              <span>Video</span>
           </button>
 
           <button>
-             <img src="/images/event-icon.svg" alt=''/>
+             <img src="/images/event-icon.svg" alt='event'/>
              <span>Event</span>
           </button>
 
           <button>
-             <img src="/images/article-icon.svg" alt=''/>
+             <img src="/images/article-icon.svg" alt='article'/>
              <span>Write Article</span>
           </button>
        </div>
+       </ShareBox>
     </Container>
   )
 }
@@ -41,7 +42,51 @@ const Main = () => {
 const Container = styled.div``
 
 
-const ShareBox = styled.div``
+const CommonCard = styled.div`
+   text-align: center;
+   overflow: hidden;
+   margin-bottom:8px;
+   background-color: #fff;
+   border-radius: 5px;
+   position: relative;
+   border: none;
+`
+
+const ShareBox = styled(CommonCard)`
+     display: flex;
+     flex-direction: column;
+     margin : 0 0 8px;
+     color: #958b7b ;
+      div {
+        button {
+            outline: none;
+            color: rgba(0,0,0,0.6) ;
+            font-size : 1rem;
+            line-height: 1.5;
+            min-height: 48px;
+            background: transparent  ;
+            border : none;
+            display: flex;
+            align-items : center;
+            font-weight: 600;
+ }
+      &:first-child{
+               display: flex;
+               align-items: center;
+               padding : 8px 16px 0 16px;
+    
+                 img {
+                  width: 48px;
+                  margin-right: 10px ;
+                  border-radius: 24px;
+               }
+
+               button {
+                  margin: 4px 0;
+               }
+            }
+        }
+  `
 
 
-export default Main
+export default Main 
