@@ -55,6 +55,41 @@ const Main = () => {
            <SharedImage>
               <img src="/images/ken.png" alt="shared" />
            </SharedImage>
+           <SocialCount>
+               <li>
+                   <button>
+                       <img src="https://static-exp1.licdn.com/sc/h/8ekq8gho1ruaf8i7f86vd1ftt"  alt="scoial"/>
+                       <img src="https://static-exp1.licdn.com/sc/h/b1dl5jk88euc7e9ri50xy5qo8"  alt="scoial"/>
+                       <span>10</span>
+                   </button>
+                   
+               </li>
+             <li>
+                <a>2 Comment</a>
+             </li>
+           </SocialCount>
+           <button>
+              <img src='/images/like.png' alt="like" width="24px" height="24px"/>
+              <span> Like </span>
+           </button>
+
+           <button>
+              <img src='/images/comment-icon.svg' alt="comment" />
+              <span>Comment</span>
+           </button>
+
+
+           <button>
+              <img src='/images/repost-icon.svg' alt="repost" />
+              <span>Repost</span>
+           </button>
+           
+           <button>
+              <img src='/images/send-icon.svg' alt="send" />
+              <span>Send</span>
+           </button>
+           
+           
        </Article>
     </Container>
   )
@@ -208,6 +243,21 @@ const SharedImage = styled.div`
        width: 100%;
        height: 100%
    }
+`
+
+const SocialCount =  styled.ul`
+list-style-type: none ;
+margin: 6px ;
+display: flex ;
+justify-content: space-between;
+align-items: center;
+li {
+    button {
+       border: none;
+       align-items: center;
+    }
+}
+
 `
 
 export default Main 
