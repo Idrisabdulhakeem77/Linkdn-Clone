@@ -68,6 +68,7 @@ const Main = () => {
                 <a>2 Comment</a>
              </li>
            </SocialCount>
+           <SocialAction>
            <button>
               <img src='/images/like.png' alt="like" width="24px" height="24px"/>
               <span> Like </span>
@@ -89,7 +90,7 @@ const Main = () => {
               <span>Send</span>
            </button>
            
-           
+           </SocialAction>
        </Article>
     </Container>
   )
@@ -258,6 +259,29 @@ li {
     }
 }
 
+`
+
+const SocialAction = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   padding : 4px 8px ;
+   button {
+      display: flex;
+      justify-content: space-evenly;
+      align-items:  center;
+      padding: 8px ;
+      border: none ;
+      outline : none;
+      margin-left : 3px;
+      background: none;
+
+      @media screen and (min-width: 768px) {
+          span {
+             margin-left: 8px ;
+          }
+      }
+   }
 `
 
 export default Main 
