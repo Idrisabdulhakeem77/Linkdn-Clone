@@ -1,10 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './userSlice'
+import userReducer from './userSlice'
+
+
 
 
 export const store = configureStore({
-  reducer: {
-    count: counterReducer ,
-  },
+  reducer: userReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['user/signIn'],
+        ignoredPaths: ['user']
+      },
+    }),
 })
-
