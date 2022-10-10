@@ -49,6 +49,12 @@ const Main = () => {
                   <img src='/images/ellipsis.svg' alt="More"/>
                </button>
            </SharedUser>
+           <Description>
+              Description
+           </Description>
+           <SharedImage>
+              <img src="/images/ken.png" alt="shared" />
+           </SharedImage>
        </Article>
     </Container>
   )
@@ -185,5 +191,23 @@ const SharedUser = styled.div`
   
 `
 
+
+const Description = styled.div`
+     text-align: left;
+     padding: 0 1rem;
+     overflow: hidden;
+     margin-bottom: 4px;
+  `
+const SharedImage = styled.div`
+   width: 100%;
+   position : relative;
+   display: block;
+
+   img {
+      object-fit: contain;
+       width: 100%;
+       height: 100%
+   }
+`
 
 export default Main 
