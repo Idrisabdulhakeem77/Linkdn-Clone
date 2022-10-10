@@ -1,8 +1,8 @@
 import React  from 'react'
 import { useSelector } from 'react-redux'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { signOut } from '../redux/userSlice'
+import {  signOutApi } from '../redux/userSlice'
 
 
 function Navbar() {
@@ -76,7 +76,7 @@ function Navbar() {
                 
               </a>
 
-              <SignOut onClick={() => signOut()}>
+              <SignOut onClick={() => signOutApi()}>
                 <a>Sign Out</a>
               </SignOut>
               
@@ -95,7 +95,7 @@ function Navbar() {
             </NavListWrap>
            </Nav>
             </Content>
-          { console.log(user)}
+          
         </Container>
     </div>
   )

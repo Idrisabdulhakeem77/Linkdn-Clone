@@ -1,6 +1,6 @@
 import { createSlice   } from '@reduxjs/toolkit'
 import {provider , auth} from '../firebase'
-import {  signInWithPopup  } from "firebase/auth";
+import {  signInWithPopup , signOut} from "firebase/auth";
 
 const initialState = {
   user : null
@@ -48,10 +48,10 @@ export const signInApi=  () => {
   }
 }
 
-export const signOut = () => {
+export const signOutApi = () => {
    return dispatch => {
-      auth.signOut()
-      .then (payload => dispatch(signIn(null)))
+     signOut(auth)
+      .then (payload => dispatch(console.log("dis")))
       .catch(err => console.log(err))
    }
 }
