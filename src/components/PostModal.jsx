@@ -27,6 +27,13 @@ function PostModal() {
                   <img src="/images/video-upload-icon.svg" alt=""/>
                   </AssetsButton>
               </AttachAssets>
+              <ShareComment>
+              <AssetsButton>
+                  <img src="/images/comment-icon.svg" alt="" />
+                   Anyone
+              </AssetsButton>
+              </ShareComment>
+        <PostButton>Post </PostButton>
            </ShareImage>
        </Content>
    </Container>
@@ -123,7 +130,23 @@ padding-right: 8px ;
       width:40px;
 }
 `
+const  ShareComment = styled.div`
+padding-left: 8px;
+margin-right: auto;
+`
 
+
+
+const PostButton = styled.div`
+border-radius: 25px;
+background-color: #0A66c2;
+padding :1rem ;
+color: #fff;
+
+ &:hover {
+     background : #004182 ;
+ }
+`
 
 
 export default PostModal
