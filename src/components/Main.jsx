@@ -33,6 +33,23 @@ const Main = () => {
           </button>
        </div>
        </ShareBox>
+       <Article>
+           Article 
+           <SharedUser>
+               <a>
+                   <img src="/images/user.svg" alt="user" />
+               </a>
+               <div>
+                   <span>Title</span>
+                   <span>Info</span>
+                   <span>Date</span>
+               </div>
+
+               <button>
+                  <img src='/images/ellipsis.svg' alt="More"/>
+               </button>
+           </SharedUser>
+       </Article>
     </Container>
   )
 }
@@ -110,6 +127,63 @@ const ShareBox = styled(CommonCard)`
         }
         }
   `
+
+
+
+
+const Article = styled(CommonCard)`
+   padding : 0;
+   margin : 0 0 8px ;
+`
+
+const SharedUser = styled.div`
+   padding-right: 40px;
+   flex-wrap :nowrap;
+   padding: 13px 16px 0;
+   margin-bottom: 8px;
+   align-items: center;
+   display: flex;
+
+   a {
+       margin-right: 12px;
+       text-align: center;
+       display : flex;
+       overflow: hidden;
+
+        img {
+           width: 48px;
+           height: 48px ;
+        }
+
+       
+   }
+
+   div {
+       display: flex;
+      flex-direction : column;
+      flex-grow : 1;
+      margin-left: 8px;
+      overflow: hidden;
+
+       span{
+          text-align: start;
+           &:first-child{
+             font-size : 1rem;
+              font-weight: 700;
+           }
+       }
+   }
+
+   button {
+       position: absolute;
+       top : 0;
+       right: 12px;
+       background : transparent ;
+       border: none;
+       outline : none;
+   }
+  
+`
 
 
 export default Main 
