@@ -43,9 +43,23 @@ function PostModal({ handleClick , showModal }) {
               onChange={(e) => setEditInfo(e.target.value)}
                placeholder="What do You want to talk about?"
                autoFocus={true}
-                >
-                  
-               </textarea>
+                />
+                <UploadImage>
+                <input
+                  type="file"
+                  name="image"
+                  id="file"
+                  accept='image/gif image/jpeg image/png'
+                  style={{ display : "none"}}
+                  onChange={hanldeChange}
+                 />
+                 <p>
+                     <label htmlFor='file'>
+                         Select an image
+                     </label>
+                 </p>
+                 {shareImage && <img src={URL.createObjectURL(shareImage)} alt="imag"/>}
+                 </UploadImage>
                </Editor>
            </SharedContent>
            <ShareImage>
@@ -189,6 +203,9 @@ const Editor = styled.div `
          resize: none;
     }
  `
+
+
+const UploadImage = styled.div``
 
 
 export default PostModal
