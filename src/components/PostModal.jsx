@@ -1,14 +1,34 @@
 import React  , {useState } from 'react'
 import styled from 'styled-components'
 
-function PostModal() {
+function PostModal({ handleClick , showModal }) {
     const [editInfo , setEditInfo ] = useState("")
+    const [shareImage , setShowImage] = useState("")
+
+    const hanldeChange = (e) => {
+        const image = e.target.files[0]
+
+        if(image === "" || image === "undefine") {
+            alert(`No image , the file type is ${typeof(image)}`)
+            return 
+        }
+
+        setShowImage(image)
+    }
+
+    const reset = (e) => {
+         setEditInfo("")
+        handleClick(e)
+    }
   return (
+    
+    <>
+    { showModal === "open" &&  
    <Container>
        <Content>
            <Header>
               <h2> Create Post</h2>
-              <button>
+              <button onClick={(e) => reset(e)}>
                   Close
               </button>
            </Header>
@@ -44,10 +64,12 @@ function PostModal() {
                    Anyone
               </AssetsButton>
               </ShareComment>
-        <PostButton>Post </PostButton>
+        <PostButton disabled={!editInfo ? true : false }>Post </PostButton>
            </ShareImage>
        </Content>
    </Container>
+   }
+   </>
   )
 }
 
@@ -150,7 +172,7 @@ margin-right: auto;
 
 const PostButton = styled.div`
 border-radius: 25px;
-background-color: #0A66c2;
+background-color: ${props => props.disabled ? "rgba(0 ,0 , 0 , 0.8)" : " #0A66c2"};
 padding :12px ;
 color: #fff;
 
