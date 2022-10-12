@@ -1,6 +1,6 @@
 import { createSlice   } from '@reduxjs/toolkit'
 import {provider , auth, storage } from '../firebase'
-import {  signInWithPopup , signOut} from "firebase/auth";
+import {  getAuth, signInWithPopup , signOut} from "firebase/auth";
 import { ref  , uploadBytesResumable , getDownloadURL} from 'firebase/storage';
 
 const initialState = {
@@ -62,14 +62,21 @@ const testShit = (data) =>  {
      console.log(data)
 }
 
+const auth2 = getAuth()
 export const signOutApi = () => {
-     return dispatch => {
-      signOut(auth).then(() => {
-          dispatch(signIn(null))
-      }).catch((error) => {
-         console.log(error)
-      });
-     }
+  return dispatch => {
+      signOut(auth2)
+    .then(() => console.log("succcesffully"))
+    .catch((err) => console.log(err))
+ }
+    //  return dispatch => {
+    //   signOut(auth).then(() => {
+    //     console.log("Signed Out")
+    //       dispatch(signIn(null))
+    //   }).catch((error) => {
+    //      console.log(error)
+    //   });
+    //  }
 }
 
 export const { signIn }  = userSlice.actions
