@@ -49,41 +49,30 @@ export const signInApi=  () => {
   }
 }
 
-export const signOutApi = () => {
-   return dispatch => {
-     signOut(auth)
-      .then (payload => dispatch(console.log("dis")))
-      .catch(err => console.log(err))
-   }
+// export const signOutApi = () => {
+//    return dispatch => {
+//      signOut(auth)
+//       .then (payload => console.log("dis"))
+//       .catch(err => console.log(err))
+//    }
+// }
+
+
+const testShit = (data) =>  {
+     console.log(data)
 }
 
-export const postArticleApi = (payload) => {
-     return (dispatch) => {
-        if(payload !== "") {
-           const storageRef = ref(storage , `images/${payload.image.name}`)
-
-           const upload = uploadBytesResumable( storageRef)
-
-           upload.on('state_changed' , (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-
-            console.log(`Process ${progress}`)
-           }, 
-           (error) => {
-             // Handle unsuccessful uploads
-           }, 
-           () => {
-        
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              console.log('File available at', downloadURL);
-            })
-
-           
-        }
+export const signOutApi = () => {
+     return dispatch => {
+      signOut(auth).then(() => {
+          dispatch(signIn(null))
+      }).catch((error) => {
+         console.log(error)
+      });
      }
 }
 
-export const { signIn}  = userSlice.actions
+export const { signIn }  = userSlice.actions
 
 
 // export const {signInApi } = counterSlice.actions

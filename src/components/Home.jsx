@@ -58,7 +58,6 @@ const  Home = () =>  {
                  <img src="/images/hero.svg"  alt="hero-img"/>
              </Hero>
           </Section>
-       { console.log(user)}
      </Container>
   )
 }

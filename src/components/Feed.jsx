@@ -9,9 +9,11 @@ import { Navigate } from 'react-router-dom';
 
 
 const Feed = () => {
+  const user =  useSelector(state => state.user)
  
   return (
      <Container>
+      {!user &&<Navigate replace to="/" />} 
          <Section>
         <h5>
           <a>Hiring in a hurry? - </a>

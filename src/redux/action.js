@@ -1,6 +1,7 @@
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import db from "../firebase";
-import {set , ref} from 'firebase/database'
+// import {set } from 'firebase/database'
+import { getDatabase, set } from "firebase/database"
 
 
 
@@ -30,7 +31,7 @@ uploadTask.on('state_changed',
       console.log('File available at', downloadURL);
     });
 
-    set(ref(db, 'users/' + userId), {
+    set(ref(db, 'users/' ), {
         actor : {
              description : payload.user.email,
              title : payload.user.displayName,
