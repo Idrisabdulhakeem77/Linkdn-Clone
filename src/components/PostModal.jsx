@@ -1,7 +1,11 @@
 import React  , {useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { postArticleApi } from '../redux/action'
+
 
 function PostModal({ handleClick , showModal }) {
+    const user = useSelector(state => state.user)
     const [editInfo , setEditInfo ] = useState("")
     const [shareImage , setShowImage] = useState("")
 
@@ -14,6 +18,22 @@ function PostModal({ handleClick , showModal }) {
         }
 
         setShowImage(image)
+    }
+
+
+    const postArticle = (e) => {
+         e.preventDefault()
+         if(e.target !== e.currentTarget) return
+
+         const payload = {
+             image : shareImage,
+             user : user,
+             description : editInfo,
+             timestamp : Date.now()
+         }
+
+         postArticle(payload)
+         reset(e)
     }
 
     const reset = (e) => {
@@ -34,8 +54,13 @@ function PostModal({ handleClick , showModal }) {
            </Header>
            <SharedContent>
                <UserInfo>
-                 <img src='/images/user.svg' alt="user"/>
-                  <span> Name </span>
+                { user.photoURL ? (
+                    <img src={user.photoURL} alt="user"/>
+                ) : (
+                    <img src='/images/user.svg' alt="user"/>
+                )}
+                 
+                  <span> { user.displayName} </span>
                </UserInfo>
                <Editor>
                <textarea
@@ -205,7 +230,12 @@ const Editor = styled.div `
  `
 
 
-const UploadImage = styled.div``
+const UploadImage = styled.div`
+   text-align: center;
+     img {
+         width: 100%;
+     }
+ `
 
 
 export default PostModal
