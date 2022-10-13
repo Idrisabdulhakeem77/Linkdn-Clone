@@ -2,6 +2,7 @@ import React  , {useState } from 'react'
 import { useSelector , useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { postArticleApi } from '../redux/action'
+import { Timestamp } from 'firebase/firestore/lite'
 
 
 function PostModal({ handleClick , showModal }) {
@@ -15,7 +16,7 @@ function PostModal({ handleClick , showModal }) {
         image : shareImage,
         user : user,
         description : editInfo,
-        timestamp : Date.now()
+        timestamp : Timestamp.now()
     }
 
 
@@ -31,20 +32,20 @@ function PostModal({ handleClick , showModal }) {
     }
 
 
-    const postArticle = (e) => {
-         e.preventDefault()
-         if(e.target !== e.currentTarget) return
+    // const postArticle = (e) => {
+    //      e.preventDefault()
+    //      if(e.target !== e.currentTarget) return
 
-         const payload = {
-             image : shareImage,
-             user : user,
-             description : editInfo,
-             timestamp : Date.now()
-         }
+    //      const payload = {
+    //          image : shareImage,
+    //          user : user,
+    //          description : editInfo,
+    //          timestamp : Date.now()
+    //      }
 
-         postArticleApi(payload)
-         reset(e)
-    }
+    //      postArticleApi(payload)
+    //      reset(e)
+    // }
 
     const reset = (e) => {
          setEditInfo("")

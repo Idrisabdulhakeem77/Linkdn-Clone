@@ -1,5 +1,5 @@
 import {  ref, uploadBytesResumable, getDownloadURL , uploadBytes } from "firebase/storage";
-import db from "../firebase";
+import db, { storage } from "../firebase";
 // import {set } from 'firebase/database'
 import { getDatabase, set } from "firebase/database"
 import { createAsyncThunk } from "@reduxjs/toolkit";
@@ -51,5 +51,32 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const postArticleApi = (payload) => {
-    console.log(payload)
+
+    const storageRef = ref(storage , `images/${payload.image.name}`)
+    
+    const uploadTask = uploadBytesResumable(storageRef, payload.image);
+
+    uploadTask.on('state_changed' , (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+        console.log('Upload is ' + progress + '% done');
+
+        console.log(snapshot.state)
+
+        if(snapshot.state === "running") {
+             console.log(`Progress ${progress}%`)
+        }
+    }, 
+    (error) => {
+        console.log(error)
+    },
+    () => {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log('File available at', downloadURL);
+        });
+      }
+    )
+ 
 }
