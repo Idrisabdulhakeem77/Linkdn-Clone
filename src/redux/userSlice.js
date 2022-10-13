@@ -12,24 +12,6 @@ export const setUser =  (payload) =>  ({
     user : payload  
 })
 
-const userReducer = ( state , action) => {
-    switch(action.type){
-       case "Set_User" :
-          return { ...state , user: action.payload}
-      
-      default :
-         return state
-    }
-}
-
-// export const counterSlice = createSlice({
-//   name: 'user',
-//   initialState,
-//   reducers: userReducer
-//   },
-// )
-
-
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -49,13 +31,19 @@ export const signInApi=  () => {
   }
 }
 
-// export const signOutApi = () => {
-//    return dispatch => {
-//      signOut(auth)
-//       .then (payload => console.log("dis"))
-//       .catch(err => console.log(err))
-//    }
-// }
+export const signOutApi =  () => {
+  return dispatch => {
+    signOut(auth).then(() => {
+       dispatch(signIn(null))
+    }).catch((error) => {
+      // An error happened.
+    });
+
+  }
+  
+}
+
+
 
 
 const testShit = (data) =>  {
@@ -63,28 +51,9 @@ const testShit = (data) =>  {
 }
 
 const auth2 = getAuth()
-export const signOutApi = () => {
-  return dispatch => {
-      signOut(auth2)
-    .then(() => console.log("succcesffully"))
-    .catch((err) => console.log(err))
- }
-    //  return dispatch => {
-    //   signOut(auth).then(() => {
-    //     console.log("Signed Out")
-    //       dispatch(signIn(null))
-    //   }).catch((error) => {
-    //      console.log(error)
-    //   });
-    //  }
-}
+
 
 export const { signIn }  = userSlice.actions
-
-
-// export const {signInApi } = counterSlice.actions
-
-// export default counterSlice.reducer
 
 
 export default userSlice.reducer
