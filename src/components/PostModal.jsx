@@ -1,13 +1,23 @@
 import React  , {useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector , useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { postArticleApi } from '../redux/action'
 
 
 function PostModal({ handleClick , showModal }) {
     const user = useSelector(state => state.user)
+    const dispatch = useDispatch()
     const [editInfo , setEditInfo ] = useState("")
     const [shareImage , setShowImage] = useState("")
+
+
+    const payload = {
+        image : shareImage,
+        user : user,
+        description : editInfo,
+        timestamp : Date.now()
+    }
+
 
     const hanldeChange = (e) => {
         const image = e.target.files[0]
@@ -32,12 +42,13 @@ function PostModal({ handleClick , showModal }) {
              timestamp : Date.now()
          }
 
-         postArticle(payload)
+         postArticleApi(payload)
          reset(e)
     }
 
     const reset = (e) => {
          setEditInfo("")
+         setShowImage("")
         handleClick(e)
     }
   return (
@@ -103,7 +114,7 @@ function PostModal({ handleClick , showModal }) {
                    Anyone
               </AssetsButton>
               </ShareComment>
-        <PostButton disabled={!editInfo ? true : false }>Post </PostButton>
+        <PostButton disabled={!editInfo ? true : false } onClick={() => postArticleApi(payload)}>Post </PostButton>
            </ShareImage>
        </Content>
    </Container>
