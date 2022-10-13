@@ -36,21 +36,13 @@ export const signOutApi =  () => {
     signOut(auth).then(() => {
        dispatch(signIn(null))
     }).catch((error) => {
-      // An error happened.
+        console.log(error)
     });
 
   }
   
 }
 
-
-
-
-const testShit = (data) =>  {
-     console.log(data)
-}
-
-const auth2 = getAuth()
 
 
 export const { signIn }  = userSlice.actions

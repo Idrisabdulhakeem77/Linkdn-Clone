@@ -78,7 +78,7 @@ function Navbar() {
               </a>
 
               <SignOut onClick={() => dispatch(signOutApi())}>
-                <button>Sign Out</button>
+                <a>Sign Out</a>
               </SignOut>
               
             </User>
