@@ -58,7 +58,6 @@ export const postArticleApi = (payload) => {
     const uploadTask = uploadBytesResumable(storageRef, payload.image);
 
     uploadTask.on('state_changed' , (snapshot) => {
-        console.log(snapshot)
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
         console.log('Upload is ' + progress + '% done');
@@ -73,10 +72,7 @@ export const postArticleApi = (payload) => {
         console.log(error)
     },
     async  () => {
-        // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        //   console.log('File available at', downloadURL);
-        //   console.log(downloadURL)
-        // });
+       
        const response = await getDownloadURL(uploadTask.snapshot.ref)
        console.log(response)
       }
