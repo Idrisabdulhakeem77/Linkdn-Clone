@@ -78,7 +78,7 @@ export const postArticleApi = (payload) => {
          try {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => { 
             
-            await setDoc(doc(db, "users" ,"user") , {
+            await setDoc(doc(db, "users" , payload.user.displayName) , {
             actor : {
               description : payload.user.email,
               title : payload.user.displayName,
@@ -86,6 +86,8 @@ export const postArticleApi = (payload) => {
               image : payload.user.photoURL,
          } , 
             comment : 0,
+            shareImage : downloadURL,
+            description : payload.description
              
         }    
             

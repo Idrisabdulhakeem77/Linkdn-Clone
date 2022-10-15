@@ -12,13 +12,7 @@ function PostModal({ handleClick , showModal }) {
     const [shareImage , setShowImage] = useState("")
 
 
-    const payload = {
-         id : Math.floor(Math.random() * 100 + 1),
-        image : shareImage,
-        user : user,
-        description : editInfo,
-        timestamp : Timestamp.now().toDate()
-    }
+   
 
 
     const hanldeChange = (e) => {
@@ -33,20 +27,22 @@ function PostModal({ handleClick , showModal }) {
     }
 
 
-    // const postArticle = (e) => {
-    //      e.preventDefault()
-    //      if(e.target !== e.currentTarget) return
+    const postArticle = (e) => {
+         e.preventDefault()
+         if(e.target !== e.currentTarget) return
+        
+         const payload = {
+            id : Math.floor(Math.random() * 100 + 1),
+           image : shareImage,
+           user : user,
+           description : editInfo,
+           timestamp : Timestamp.now().toDate()
+       }
+         
 
-    //      const payload = {
-    //          image : shareImage,
-    //          user : user,
-    //          description : editInfo,
-    //          timestamp : Date.now()
-    //      }
-
-    //      postArticleApi(payload)
-    //      reset(e)
-    // }
+         postArticleApi(payload)
+         reset(e)
+    }
 
     const reset = (e) => {
          setEditInfo("")
@@ -116,7 +112,7 @@ function PostModal({ handleClick , showModal }) {
                    Anyone
               </AssetsButton>
               </ShareComment>
-        <PostButton disabled={!editInfo ? true : false } onClick={() => postArticleApi(payload)}>Post </PostButton>
+        <PostButton disabled={!editInfo ? true : false } onClick={(e) => postArticle(e)}>Post </PostButton>
            </ShareImage>
        </Content>
    </Container>
