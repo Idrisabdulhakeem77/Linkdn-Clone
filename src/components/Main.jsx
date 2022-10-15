@@ -9,7 +9,7 @@ const Main = () => {
 
    useEffect(() => {
         getArticles()
-   } , [] )
+   } , []  )
 
    const [isModalOpen , setIsModalOpen] = useState('close')
 

@@ -2,7 +2,10 @@ import {  ref, uploadBytesResumable, getDownloadURL  } from "firebase/storage";
 import db, { storage } from "../firebase";
 
 
-import { collection, doc, setDoc  , getDocs } from "firebase/firestore";
+import { collection, doc, setDoc  , getDocs , query , where } from "firebase/firestore";
+
+
+
 export const postArticleApi = (payload) => {
     
     const storageRef = ref(storage , `images/${payload.image.name}`)
@@ -68,9 +71,10 @@ export const postArticleApi = (payload) => {
 
 
 export const getArticles = async () => {
+  let payload ; 
   const querySnapshot = await getDocs(collection(db, "users"));
-querySnapshot.forEach((doc) => {
-    console.log(doc)
-});
+
+   payload =  querySnapshot.docs.map( doc =>  doc.data())
+
 
 }
