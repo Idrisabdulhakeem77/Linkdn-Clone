@@ -1,54 +1,8 @@
-import {  ref, uploadBytesResumable, getDownloadURL , uploadBytes } from "firebase/storage";
+import {  ref, uploadBytesResumable, getDownloadURL  } from "firebase/storage";
 import db, { storage } from "../firebase";
-import { getDatabase, set } from "firebase/database"
+
 
 import { collection, doc, setDoc } from "firebase/firestore";
-
-
-
-
-// export const postArticleApi = (payload ) => {
-//      return (dispatch) => {
-//         if(payload !== "") {
-
-// const storage = getStorage();
-// const storageRef = ref(storage, `images/${payload.image.name}`);
- 
-// console.log(storageRef)
-
-// const uploadTask = uploadBytesResumable(storageRef );
-
-// // Register three observers:
-// // 1. 'state_changed' observer, called any time the state changes
-// // 2. Error observer, called on failure
-// // 3. Completion observer, called on successful completion
-// uploadTask.on('state_changed', 
-//   (snapshot) => {
-//     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//     console.log('Upload is ' + progress + '% done');
-//   }, 
-//   (error) => {
-//      console.log(error)
-//   }, 
-//   () => {
-//     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-//       console.log('File available at', downloadURL);
-//     });
-
-//     set(ref(db, 'users/' ), {
-//         actor : {
-//              description : payload.user.email,
-//              title : payload.user.displayName,
-//              date : payload.timestamp,
-//              image : payload.user.photoURL,
-//         }
-//            });
-// //   }
-// );
-//         }
-//      }
-// }
-
 
 export const postArticleApi = (payload) => {
     
@@ -77,8 +31,10 @@ export const postArticleApi = (payload) => {
         console.log(payload )
          try {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => { 
+
+            const newUser = doc(collection(db, "users"));
             
-            await setDoc(doc(db, "users" , payload.user.displayName) , {
+            await setDoc( newUser , {
             actor : {
               description : payload.user.email,
               title : payload.user.displayName,
