@@ -1,6 +1,5 @@
 import {  ref, uploadBytesResumable, getDownloadURL , uploadBytes } from "firebase/storage";
 import db, { storage } from "../firebase";
-// import {set } from 'firebase/database'
 import { getDatabase, set } from "firebase/database"
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -36,12 +35,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 //     });
 
 //     set(ref(db, 'users/' ), {
-//         actor : {
-//              description : payload.user.email,
-//              title : payload.user.displayName,
-//              date : payload.timestamp,
-//              image : payload.user.photoURL,
-//         }
+        // actor : {
+        //      description : payload.user.email,
+        //      title : payload.user.displayName,
+        //      date : payload.timestamp,
+        //      image : payload.user.photoURL,
+        // }
 //       });
 //   }
 // );
@@ -51,31 +50,40 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const postArticleApi = (payload) => {
-     console.log(storage)
+    
     const storageRef = ref(storage , `images/${payload.image.name}`)
     
-    console.log(storageRef)
-    const uploadTask = uploadBytesResumable(storageRef, payload.image);
+       if(payload.image !== ""){
+        
+        const uploadTask = uploadBytesResumable(storageRef, payload.image);
 
-    uploadTask.on('state_changed' , (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-
-        console.log('Upload is ' + progress + '% done');
-
-        console.log(snapshot.state)
-
-        if(snapshot.state === "running") {
-             console.log(`Progress ${progress}%`)
+        uploadTask.on('state_changed' ,
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  
+          console.log('Upload is ' + progress + '% done');
+  
+          console.log(snapshot.state)
+  
+          if(snapshot.state === "running") {
+               console.log(`Progress ${progress}%`)
+          }
+      }, 
+      (error) => {
+          console.log(error)
+      },
+      async  () => {
+        getDownloadURL(uploadTask.snapshot?.ref).then((downloadURL) => {
+          console.log('File available at', downloadURL);
+          
+          
+         
+        });
         }
-    }, 
-    (error) => {
-        console.log(error)
-    },
-    async  () => {
-       
-       const response = await getDownloadURL(uploadTask.snapshot.ref)
-       console.log(response)
-      }
-    )
+      )
+       } 
+  
+
+
  
 }
