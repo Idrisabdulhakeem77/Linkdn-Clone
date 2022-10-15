@@ -3,14 +3,15 @@ import {provider , auth, storage } from '../firebase'
 import {  getAuth, signInWithPopup , signOut} from "firebase/auth";
 import { ref  , uploadBytesResumable , getDownloadURL} from 'firebase/storage';
 
-const initialState = {
+export const initialState = {
+  articles : [] ,
   user : null
 }
 
-export const setUser =  (payload) =>  ({
-    type : "SET_USER",
-    user : payload  
-})
+// export const setUser =  (payload) =>  ({
+//     type : "SET_USER",
+//     user : payload  
+//   })
 
 export const userSlice = createSlice({
   name: 'user',
@@ -22,6 +23,17 @@ export const userSlice = createSlice({
   }
   },
 )
+
+// export const articleSlice =  createSlice({
+//     name : "articles",
+//     initialState ,
+//     reducers : {
+//          getArticles : ( state , action) => {
+//             return { ...state , articles : action.payload}
+//          }
+//     }
+
+// })
 
 export const signInApi=  () => {
   return dispatch => {

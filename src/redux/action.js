@@ -2,7 +2,7 @@ import {  ref, uploadBytesResumable, getDownloadURL  } from "firebase/storage";
 import db, { storage } from "../firebase";
 
 
-import { collection, doc, setDoc  , getDocs , query , where } from "firebase/firestore";
+import { collection, doc, setDoc  , getDocs  } from "firebase/firestore";
 
 
 
@@ -63,18 +63,21 @@ export const postArticleApi = (payload) => {
       }
       )
        } 
-  
 
-
- 
 }
+export const  getArticles = ( payload) => ({
+     type :' GET_ARTICLES' ,
+     articles : payload 
+    
+})
 
 
-export const getArticles = async () => {
+export const getArticlesApi = async () => {
   let payload ; 
   const querySnapshot = await getDocs(collection(db, "users"));
 
    payload =  querySnapshot.docs.map( doc =>  doc.data())
-
+   
+    
 
 }
