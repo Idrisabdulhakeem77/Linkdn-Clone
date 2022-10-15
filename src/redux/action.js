@@ -1,7 +1,8 @@
 import {  ref, uploadBytesResumable, getDownloadURL , uploadBytes } from "firebase/storage";
 import db, { storage } from "../firebase";
 import { getDatabase, set } from "firebase/database"
-import { createAsyncThunk } from "@reduxjs/toolkit";
+
+import { collection, doc, setDoc } from "firebase/firestore";
 
 
 
@@ -35,14 +36,14 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 //     });
 
 //     set(ref(db, 'users/' ), {
-        // actor : {
-        //      description : payload.user.email,
-        //      title : payload.user.displayName,
-        //      date : payload.timestamp,
-        //      image : payload.user.photoURL,
-        // }
-//       });
-//   }
+//         actor : {
+//              description : payload.user.email,
+//              title : payload.user.displayName,
+//              date : payload.timestamp,
+//              image : payload.user.photoURL,
+//         }
+//            });
+// //   }
 // );
 //         }
 //      }
@@ -70,16 +71,37 @@ export const postArticleApi = (payload) => {
           }
       }, 
       (error) => {
-          console.log(error)
+          console.log("Error ",error)
       },
       async  () => {
-        getDownloadURL(uploadTask.snapshot?.ref).then((downloadURL) => {
-          console.log('File available at', downloadURL);
+        console.log(payload )
+         try {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => { 
+            
+            await setDoc(doc(db, "users" ,"user") , {
+            actor : {
+              description : payload.user.email,
+              title : payload.user.displayName,
+              date : payload.timestamp,
+              image : payload.user.photoURL,
+         } , 
+            comment : 0,
+             
+        }    
+            
+            );
+
+
+            });
+              
+
+         } catch(err){
+           console.log(err)
+         }
+        
           
-          
-         
-        });
-        }
+      
+      }
       )
        } 
   

@@ -13,10 +13,11 @@ function PostModal({ handleClick , showModal }) {
 
 
     const payload = {
+         id : Math.floor(Math.random() * 100 + 1),
         image : shareImage,
         user : user,
         description : editInfo,
-        timestamp : Timestamp.now()
+        timestamp : Timestamp.now().toDate()
     }
 
 
