@@ -6,7 +6,7 @@ const articleSlice =  createSlice({
     initialState ,
     reducers : {
          getArticles : ( state , action) => {
-             return {...state , articles : action.payload}
+             console.log(state)
          }
     }
 

@@ -64,5 +64,7 @@ export const getArticlesApi = () => {
     const querySnapshot = await getDocs(collection(db, "users"));
 
     payload = querySnapshot.docs.map((doc) => doc.data());
+
+      dispatch(getArticles({payload}))
   };
 };

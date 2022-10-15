@@ -4,13 +4,17 @@ import styled from "styled-components";
 import PostModal from "./PostModal";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getArticles } from "../redux/articleSlice";
+// import { getArticles } from "../redux/articleSlice";
+
+import { getArticlesApi } from "../redux/action";
 
 const Main = () => {
   const articles = useSelector((state) => state.articles);
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    getArticles();
+     dispatch(getArticlesApi());
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState("close");
