@@ -10,6 +10,7 @@ import { getArticles } from "../redux/userSlice";
 import { getArticlesApi } from "../redux/action";
 
 const Main = () => {
+  const user  = useSelector((state) => state.user)
   const articles = useSelector((state) => state.articles);
 
   const dispatch = useDispatch()
@@ -38,12 +39,21 @@ const Main = () => {
     }
   };
   return (
+    <>
+     {  articles.length === 0 ?  (
+         <p> There are no articles</p>
+     ) : ( 
     <Container>
       <ShareBox>
-        {" "}
+        
         Share Post
         <div>
-          <img src="/images/user.svg" alt="user" />
+           {user &&  user.photoURL ?  (
+               <img src={ user.photoURL } alt="user"/>
+           ) : (
+            <img  src="/images/user.svg" alt="user" />
+           )}
+         
           <button onClick={handleClick}> Share Post</button>
         </div>
         <div>
@@ -68,69 +78,80 @@ const Main = () => {
           </button>
         </div>
       </ShareBox>
-      <Article>
-        Article
-        <SharedUser>
-          <a>
-            <img src="/images/user.svg" alt="user" />
-          </a>
-          <div>
-            <span>Title</span>
-            <span>Info</span>
-            <span>Date</span>
-          </div>
+       
+      { articles.length >  0 && articles.map((article , index) => {
+           const { title ,  description , date  , image} = article.actor
+        return   (
 
-          <button>
-            <img src="/images/ellipsis.svg" alt="More" />
-          </button>
-        </SharedUser>
-        <Description>Description</Description>
-        <SharedImage>
-          <img src="/images/ken.png" alt="shared" />
-        </SharedImage>
-        <SocialCount>
-          <li>
-            <button>
-              <img
-                src="https://static-exp1.licdn.com/sc/h/8ekq8gho1ruaf8i7f86vd1ftt"
-                alt="scoial"
-              />
-              <img
-                src="https://static-exp1.licdn.com/sc/h/b1dl5jk88euc7e9ri50xy5qo8"
-                alt="scoial"
-              />
-              <span>10</span>
-            </button>
-          </li>
-          <li>
-            <a>2 Comment</a>
-          </li>
-        </SocialCount>
-        <SocialAction>
-          <button>
-            <img src="/images/like.png" alt="like" width="24px" height="24px" />
-            <span> Like </span>
-          </button>
+      <Article key={index}>
+       
+      <SharedUser>
+        <a>
+          <img src={image} alt="user" />
+        </a>
+        <div>
+          <span>{title}</span>
+          <span>{description}</span>
+          <span>{date.toDate().toLocaleDateString()}</span>
+        </div>
 
+        <button>
+          <img src="/images/ellipsis.svg" alt="More" />
+        </button>
+      </SharedUser>
+      <Description> { article.description}</Description>
+      <SharedImage>
+        <img src="/images/ken.png" alt="shared" />
+      </SharedImage>
+      <SocialCount>
+        <li>
           <button>
-            <img src="/images/comment-icon.svg" alt="comment" />
-            <span>Comment</span>
+            <img
+              src="https://static-exp1.licdn.com/sc/h/8ekq8gho1ruaf8i7f86vd1ftt"
+              alt="scoial"
+            />
+            <img
+              src="https://static-exp1.licdn.com/sc/h/b1dl5jk88euc7e9ri50xy5qo8"
+              alt="scoial"
+            />
+            <span>10</span>
           </button>
+        </li>
+        <li>
+          <a>2 Comment</a>
+        </li>
+      </SocialCount>
+      <SocialAction>
+        <button>
+          <img src="/images/like.png" alt="like" width="24px" height="24px" />
+          <span> Like </span>
+        </button>
 
-          <button>
-            <img src="/images/repost-icon.svg" alt="repost" />
-            <span>Repost</span>
-          </button>
+        <button>
+          <img src="/images/comment-icon.svg" alt="comment" />
+          <span>Comment</span>
+        </button>
 
-          <button>
-            <img src="/images/send-icon.svg" alt="send" />
-            <span>Send</span>
-          </button>
-        </SocialAction>
-      </Article>
+        <button>
+          <img src="/images/repost-icon.svg" alt="repost" />
+          <span>Repost</span>
+        </button>
+
+        <button>
+          <img src="/images/send-icon.svg" alt="send" />
+          <span>Send</span>
+        </button>
+      </SocialAction>
+    </Article>
+          
+      )}
+) }
+
       {console.log(articles)}
       <PostModal showModal={isModalOpen} handleClick={handleClick} />
     </Container>
+    )}
+    </>
   );
 };
 

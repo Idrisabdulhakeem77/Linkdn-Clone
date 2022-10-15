@@ -53,11 +53,6 @@ export const postArticleApi = (payload) => {
     );
   }
 };
-// export const  getArticles = ( payload) => ({
-//      type :'GET_ARTICLES' ,
-//      articles : payload
-
-// })
 
 export const getArticlesApi = () => {
   return async (dispatch) => {
@@ -65,7 +60,7 @@ export const getArticlesApi = () => {
     const querySnapshot = await getDocs(collection(db, "users"));
 
      payload = querySnapshot.docs.map((doc) => doc.data());
-
+       console.log(payload)
       dispatch(getArticles(payload))
   };
 };
