@@ -13,7 +13,7 @@ const Feed = () => {
  
   return (
      <Container>
-      {!user &&<Navigate replace to="/" />} 
+      {/* {!user &&<Navigate replace to="/" />}  */}
          <Section>
         <h5>
           <a>Hiring in a hurry? - </a>

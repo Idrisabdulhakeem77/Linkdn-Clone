@@ -6,10 +6,7 @@ import articleReducer from './articleSlice'
 
 
 export const store = configureStore({
-  reducer: {
-    userReducer ,
-    articleReducer
-},
+  reducer:  articleReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
