@@ -1,9 +1,16 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
 import styled from 'styled-components'
+import { getArticles } from '../redux/action'
 import PostModal from './PostModal'
 
 
+
 const Main = () => { 
+
+   useEffect(() => {
+        getArticles()
+   } , [] )
+
    const [isModalOpen , setIsModalOpen] = useState('close')
 
    const handleClick = (e) => {
