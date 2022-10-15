@@ -16,8 +16,8 @@ const Main = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-     dispatch(getArticlesApi());
-  }, []);
+      getArticlesApi();
+  }, [articles]);
 
   const [isModalOpen, setIsModalOpen] = useState("close");
 
@@ -81,6 +81,8 @@ const Main = () => {
        
       { articles.length >  0 && articles.map((article , index) => {
            const { title ,  description , date  , image} = article.actor
+
+           const { shareImage , comment } = article
         return   (
 
       <Article key={index}>
@@ -101,7 +103,7 @@ const Main = () => {
       </SharedUser>
       <Description> { article.description}</Description>
       <SharedImage>
-        <img src="/images/ken.png" alt="shared" />
+        <img src={shareImage} alt="shared" />
       </SharedImage>
       <SocialCount>
         <li>
@@ -118,7 +120,7 @@ const Main = () => {
           </button>
         </li>
         <li>
-          <a>2 Comment</a>
+          <a>{comment} Comment</a>
         </li>
       </SocialCount>
       <SocialAction>
