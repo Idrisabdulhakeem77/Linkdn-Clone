@@ -1,6 +1,7 @@
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import db, { storage } from "../firebase";
-import { getArticles } from "./articleSlice";
+// import { getArticles } from "./articleSlice";
+import { getArticles } from "./userSlice";
 
 import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 
@@ -63,8 +64,8 @@ export const getArticlesApi = () => {
     let payload;
     const querySnapshot = await getDocs(collection(db, "users"));
 
-    payload = querySnapshot.docs.map((doc) => doc.data());
+     payload = querySnapshot.docs.map((doc) => doc.data());
 
-      dispatch(getArticles({payload}))
+      dispatch(getArticles(payload))
   };
 };

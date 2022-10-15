@@ -19,7 +19,12 @@ export const userSlice = createSlice({
   reducers: {
       signIn : (state , action) => {
           return { ...state , user : action.payload}
-      }
+      } ,
+
+      getArticles : ( state , action) => {
+         return { ...state , articles : action.payload}
+    }
+
   }
   },
 )
@@ -57,7 +62,7 @@ export const signOutApi =  () => {
 
 
 
-export const { signIn }  = userSlice.actions
+export const { signIn , getArticles }  = userSlice.actions
 
 
 export default userSlice.reducer

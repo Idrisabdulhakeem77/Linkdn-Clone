@@ -5,9 +5,9 @@ const articleSlice =  createSlice({
     name : "articles",
     initialState ,
     reducers : {
-         getArticles : ( state , action) => {
-             console.log(state)
-         }
+        //  getArticles : ( state , action) => {
+        //     return {...state , articles : action.payload}
+        //  }
     }
 
 })

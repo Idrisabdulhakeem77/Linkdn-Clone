@@ -3,6 +3,7 @@ import styled from "styled-components";
 // import { getArticles } from '../redux/action'
 import PostModal from "./PostModal";
 import { useDispatch, useSelector } from "react-redux";
+import { getArticles } from "../redux/userSlice";
 
 // import { getArticles } from "../redux/articleSlice";
 

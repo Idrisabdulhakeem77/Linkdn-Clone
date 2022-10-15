@@ -16,7 +16,7 @@ const  Home = () =>  {
   return (
   
      <Container> 
-       {/* {user &&<Navigate replace to="feed" />}  */}
+       {user &&<Navigate replace to="feed" />} 
           <Nav>
              <Link  to="/">
                  <Image src="/images/login-logo.svg" alt="logo"/>
