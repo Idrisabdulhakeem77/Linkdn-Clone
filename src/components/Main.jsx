@@ -4,13 +4,14 @@ import PostModal from "./PostModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getArticles } from "../redux/userSlice";
 
-// import { getArticles } from "../redux/articleSlice";
 
-import { getArticlesApi } from "../redux/action";
+
+import { getArticlesApi } from "../redux/userSlice";
 
 const Main = () => {
   const user  = useSelector((state) => state.user)
   const articles = useSelector((state) => state.articles);
+  const loading = useSelector((state) => state.loading);
 
   const dispatch = useDispatch()
 
@@ -76,6 +77,7 @@ const Main = () => {
         </div>
       </ShareBox>
         <Content>
+           { loading && <p>LOADING</p>}
       { articles.length >  0 && articles.map((article , index) => {
            const { title ,  description , date  , image} = article.actor
 
@@ -145,7 +147,7 @@ const Main = () => {
       )}
 ) }
         </Content>
-      {console.log(articles)}
+      {console.log(loading)}
       <PostModal showModal={isModalOpen} handleClick={handleClick} />
     </Container>
     

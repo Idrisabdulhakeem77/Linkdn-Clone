@@ -1,8 +1,10 @@
 import React  , {useState } from 'react'
 import { useSelector , useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { postArticleApi } from '../redux/action'
+// import { postArticleApi } from '../redux/action'
 import { Timestamp } from 'firebase/firestore/lite'
+import {postArticleApi} from '../redux/userSlice'
+
 
 
 function PostModal({ handleClick , showModal }) {
@@ -10,6 +12,7 @@ function PostModal({ handleClick , showModal }) {
     const dispatch = useDispatch()
     const [editInfo , setEditInfo ] = useState("")
     const [shareImage , setShowImage] = useState("")
+    const loading = useSelector(state => state.loading)
 
 
    
@@ -40,7 +43,7 @@ function PostModal({ handleClick , showModal }) {
        }
          
 
-         postArticleApi(payload)
+       dispatch(postArticleApi(payload))
          reset(e)
     }
 
