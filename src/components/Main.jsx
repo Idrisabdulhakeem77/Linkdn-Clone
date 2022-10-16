@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-// import { getArticles } from '../redux/action'
 import PostModal from "./PostModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getArticles } from "../redux/userSlice";
@@ -16,8 +15,8 @@ const Main = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-      getArticlesApi();
-  }, [articles]);
+     dispatch(getArticlesApi()) ;
+  }, []);
 
   const [isModalOpen, setIsModalOpen] = useState("close");
 
@@ -40,9 +39,7 @@ const Main = () => {
   };
   return (
     <>
-     {  articles.length === 0 ?  (
-         <p> There are no articles</p>
-     ) : ( 
+    
     <Container>
       <ShareBox>
         
@@ -78,7 +75,7 @@ const Main = () => {
           </button>
         </div>
       </ShareBox>
-       
+        <Content>
       { articles.length >  0 && articles.map((article , index) => {
            const { title ,  description , date  , image} = article.actor
 
@@ -145,14 +142,13 @@ const Main = () => {
         </button>
       </SocialAction>
     </Article>
-          
       )}
 ) }
-
+        </Content>
       {console.log(articles)}
       <PostModal showModal={isModalOpen} handleClick={handleClick} />
     </Container>
-    )}
+    
     </>
   );
 };
@@ -291,7 +287,7 @@ const SharedImage = styled.div`
   img {
     object-fit: contain;
     width: 100%;
-    height: 100%;
+    height:100%;
   }
 `;
 
@@ -331,5 +327,10 @@ const SocialAction = styled.div`
     }
   }
 `;
+
+
+const Content = styled.div`
+  text-align : center ;
+`
 
 export default Main;

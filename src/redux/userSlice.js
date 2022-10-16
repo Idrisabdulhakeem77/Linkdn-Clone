@@ -5,7 +5,7 @@ import { ref  , uploadBytesResumable , getDownloadURL} from 'firebase/storage';
 
 export const initialState = {
   articles : [] ,
-  user : null
+  user : null ,
 }
 
 // export const setUser =  (payload) =>  ({
