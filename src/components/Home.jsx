@@ -1,17 +1,14 @@
 import styled from "styled-components"
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Navigate } from "react-router-dom"
 import { useDispatch , useSelector } from "react-redux"
 import { signInApi } from "../redux/userSlice"
-// import { signInApi } from "../redux/Redux"
-import { signIn } from "../redux/userSlice"
 
 
 
 const  Home = () =>  {
     const user =  useSelector(state => state.user)
    const dispatch = useDispatch()
-   const navigate = useNavigate()
 
   return (
   
