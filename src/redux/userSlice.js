@@ -32,16 +32,6 @@ export const userSlice = createSlice({
   },
 )
 
-// export const articleSlice =  createSlice({
-//     name : "articles",
-//     initialState ,
-//     reducers : {
-//          getArticles : ( state , action) => {
-//             return { ...state , articles : action.payload}
-//          }
-//     }
-
-// })
 
 export const signInApi=  () => {
   return dispatch => {
