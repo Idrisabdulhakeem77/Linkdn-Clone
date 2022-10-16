@@ -1,7 +1,7 @@
 import React  , {useState } from 'react'
 import { useSelector , useDispatch } from 'react-redux'
 import styled from 'styled-components'
-// import { postArticleApi } from '../redux/action'
+
 import { Timestamp } from 'firebase/firestore/lite'
 import {postArticleApi} from '../redux/userSlice'
 
