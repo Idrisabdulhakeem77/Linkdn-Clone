@@ -12,11 +12,6 @@ function PostModal({ handleClick , showModal }) {
     const dispatch = useDispatch()
     const [editInfo , setEditInfo ] = useState("")
     const [shareImage , setShowImage] = useState("")
-    const loading = useSelector(state => state.loading)
-
-
-   
-
 
     const hanldeChange = (e) => {
         const image = e.target.files[0]

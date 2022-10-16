@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import PostModal from "./PostModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getArticles } from "../redux/userSlice";
-
-
 
 import { getArticlesApi } from "../redux/userSlice";
 

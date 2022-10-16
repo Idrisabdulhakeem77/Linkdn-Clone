@@ -1,6 +1,6 @@
 import { createSlice   } from '@reduxjs/toolkit'
 import {provider , auth, storage } from '../firebase'
-import {  getAuth, signInWithPopup , signOut} from "firebase/auth";
+import {  signInWithPopup , signOut} from "firebase/auth";
 import { ref  , uploadBytesResumable , getDownloadURL} from 'firebase/storage';
 import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 import db from '../firebase';
@@ -11,11 +11,6 @@ export const initialState = {
   user : null ,
   loading : false 
 }
-
-// export const setUser =  (payload) =>  ({
-//     type : "SET_USER",
-//     user : payload  
-//   })
 
 export const userSlice = createSlice({
   name: 'user',
@@ -32,10 +27,6 @@ export const userSlice = createSlice({
     setLoading : (state , action) => {
         return {...state , loading  : action.payload}
     } ,
-
-    postAricles : (state , action) => {
-        console.log(state.articles)
-    }
 
   }
   },
