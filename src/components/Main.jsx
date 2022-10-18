@@ -144,7 +144,7 @@ const Main = () => {
       )}
 ) }
         </Content>
-      {console.log(loading)}
+    
       <PostModal showModal={isModalOpen} handleClick={handleClick} />
     </Container>
     

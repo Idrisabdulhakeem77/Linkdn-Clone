@@ -111,40 +111,22 @@ export const postArticleApi = (payload) => {
    }
 
 export const getArticlesApi = () => {
-  return async (dispatch) => {4
+  return async (dispatch) => {
        let payload ;
       
       const unsub = onSnapshot(collection(db , "users") , (doc) => {
           payload =   doc.docs.map(doc => doc.data())
-         console.log(payload)
+           dispatch(getArticles(payload))
       })
 
-    // let payload;
-    // const querySnapshot = await getDocs(collection(db, "users"));
-
-    //  payload = querySnapshot.docs.map((doc) => doc.data());
-    //    console.log(payload)
-    //   dispatch(getArticles(payload))
   };
-  //  let payload ;
-//   const unsub = onSnapshot(collection(db , 'users'), (doc) => {
-//     const  payload  = doc.forEach(doc => console.log(doc.data()))
-//     console.log(payload)
-// });
-//  let payload ;  
-
-
-// const unsub = onSnapshot(collection(db , "users"),  (doc) => {
-//      doc.forEach(doc => dispatch(getArticles(doc.data())))
-//     console.log(doc)
-  
-// }); 
+ 
 
 
 
  
 };
-// }
+
 
 
 
