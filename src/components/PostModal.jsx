@@ -5,7 +5,6 @@ import { Timestamp } from 'firebase/firestore/lite'
 import {postArticleApi} from '../redux/userSlice'
 
 
-
 function PostModal({ handleClick , showModal }) {
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()
@@ -37,7 +36,7 @@ function PostModal({ handleClick , showModal }) {
        }
          
 
-       dispatch(postArticleApi(payload))
+         dispatch(postArticleApi(payload))
          reset(e)
     }
 

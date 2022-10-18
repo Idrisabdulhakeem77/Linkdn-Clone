@@ -2,7 +2,7 @@ import { createSlice   } from '@reduxjs/toolkit'
 import {provider , auth, storage } from '../firebase'
 import {  signInWithPopup , signOut} from "firebase/auth";
 import { ref  , uploadBytesResumable , getDownloadURL} from 'firebase/storage';
-import { collection, doc, setDoc, getDocs } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs , onSnapshot } from "firebase/firestore";
 import db from '../firebase';
 
 
@@ -111,16 +111,40 @@ export const postArticleApi = (payload) => {
    }
 
 export const getArticlesApi = () => {
-  return async (dispatch) => {
-    let payload;
-    const querySnapshot = await getDocs(collection(db, "users"));
+  return async (dispatch) => {4
+       let payload ;
+      
+      const unsub = onSnapshot(collection(db , "users") , (doc) => {
+          payload =   doc.docs.map(doc => doc.data())
+         console.log(payload)
+      })
 
-     payload = querySnapshot.docs.map((doc) => doc.data());
-       console.log(payload)
-      dispatch(getArticles(payload))
+    // let payload;
+    // const querySnapshot = await getDocs(collection(db, "users"));
+
+    //  payload = querySnapshot.docs.map((doc) => doc.data());
+    //    console.log(payload)
+    //   dispatch(getArticles(payload))
   };
-};
+  //  let payload ;
+//   const unsub = onSnapshot(collection(db , 'users'), (doc) => {
+//     const  payload  = doc.forEach(doc => console.log(doc.data()))
+//     console.log(payload)
+// });
+//  let payload ;  
 
+
+// const unsub = onSnapshot(collection(db , "users"),  (doc) => {
+//      doc.forEach(doc => dispatch(getArticles(doc.data())))
+//     console.log(doc)
+  
+// }); 
+
+
+
+ 
+};
+// }
 
 
 
